@@ -11,7 +11,7 @@ class App extends Component {
     this.state = {
       list_items:['Item 1a', 'Item 2a', 'Item 3a'],
       user_input:'',
-    }
+      }
 
   }
 
@@ -20,14 +20,15 @@ class App extends Component {
 
     console.log(e.target.value)
     //We are taking the value of the input field (similar to using input.value) and updating the state using setState
-    this.setState({user_input:e.target.value})
-
-
+   // if(e.target.value.length >=50 && e.target.value.length <=100)
+    //{
+      this.setState({user_input:e.target.value})
+    //}
   }
 
   //This function will append the user input to the state of the list 
   handleSubmit = () =>{
-    const  {list_items, user_input} = this.state
+        const  {list_items, user_input} = this.state
     //const list_items = this.state.list_items
     //const user_input = this.state.user_input
 
@@ -36,9 +37,16 @@ class App extends Component {
     //OR that the user input is a number greater than 50 but less than 1000
 
     //Add to the state of list items
+    if(user_input.length >=50 && user_input.length <=100)
+    {
     list_items.push(user_input)
+    } else{
+      alert("The input was invalid");
+    };
+
 
     this.setState({list_items})
+    this.setState({user_input: ''})
   }
 
   render() {
